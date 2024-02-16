@@ -47,6 +47,8 @@ services:
   wordpress1:
     image: wordpress:latest
     container_name: wordpress1
+    ports:
+      - "8082:80"
     environment:
       - WORDPRESS_DB_HOST=mysql_master
       - WORDPRESS_DB_USER=root
@@ -57,20 +59,24 @@ services:
   wordpress2:
     image: wordpress:latest
     container_name: wordpress2
+    ports:
+      - "8083:80"
     environment:
       - WORDPRESS_DB_HOST=mysql_master
       - WORDPRESS_DB_USER=root
       - WORDPRESS_DB_PASSWORD=root
       - WORDPRESS_DB_NAME=replica
-      - WORDPRESS_TABLE_PREFIX=wp1_
+      - WORDPRESS_TABLE_PREFIX=wp2_
    
   wordpress3:
     image: wordpress:latest
     container_name: wordpress3
+    ports:
+      - "8084:80"
     environment:
       - WORDPRESS_DB_HOST=mysql_master
       - WORDPRESS_DB_USER=root
       - WORDPRESS_DB_PASSWORD=root
       - WORDPRESS_DB_NAME=replica
-      - WORDPRESS_TABLE_PREFIX=wp1_
+      - WORDPRESS_TABLE_PREFIX=wp3_
     
